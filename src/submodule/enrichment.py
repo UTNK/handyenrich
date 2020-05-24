@@ -1,6 +1,5 @@
 import numpy     as     np
 from   scipy     import stats
-from   submodule import statistical_test
 from   statsmodels.stats.multitest import multipletests
 
 def enrichment_testenrichment(

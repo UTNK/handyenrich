@@ -138,7 +138,7 @@ if __name__ == "__main__":
 
     # execute main_function()
     entest(
-        inputfile   = args.input        ,
+        class_term_file = args.ref      , 
         query_file  = args.query        ,
         all_file    = args.all          ,
         delim1      = args.delim1       ,
