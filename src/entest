@@ -1,0 +1,144 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+LOGO = '''
+###################################################################
+##                      handyenrich v1.0.0                       ##
+##                                                               ##
+##  Contact: Naoki Konno (naoki@bs.s.u-tokyo.ac.jp)              ##
+##  GitHub : https://github.com/UTNK/handyenrich                 ##
+###################################################################
+'''
+
+'''
+Input file 1: terms in each class
+<class1>\t<term1>
+<class1>\t<term2>
+<class1>\t<term4>
+<class1>\t<term7>
+<class2>\t<term3>
+<class2>\t<term6>
+<class2>\t<term7>
+
+Input file 2: query terms
+<term1>
+<term2>
+...
+'''
+
+### Import modules ###
+from submodule import mylink
+from submodule import enrichment
+import argparse
+import sys
+######################
+
+# func
+def entest(
+    class_term_file, 
+    query_file, 
+    all_file, 
+    delim1="\t", 
+    delim2="\t", 
+    alternative = None, 
+    correction  = None
+    ):
+
+    # read a file
+    
+    class2termlist = mylink.make_hash2(
+        class_term_file, 
+        delim1=delim1, 
+        delim2=delim2, 
+        value_type="str"
+        )
+    
+    query_termlist      = mylink.make_list( query_file   )
+
+    all_termlist        = mylink.make_list( all_file     )     
+
+
+    # test enrichment in each class
+
+    results = enrichment.enrichment(
+        class2termlist = class2termlist,
+        query_termlist = query_termlist,
+        all_termlist   = all_termlist  ,
+        alternative    = alternative   ,
+        correction     = correction
+    )
+
+    for result in results:
+        print(
+            result[ "classname" ] + "\t" +\
+            result[ "stats"     ] + "\t" +\
+            result[ "p_value"   ] + "\t" +\
+            result[ "q_value"   ] 
+        )
+
+# interface
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description='entest', add_help=True)
+    
+    parser.add_argument(
+        "-v", "--version",
+        help="Print version",
+        action='store_true',
+        default=False
+        )
+
+    parser.add_argument(
+        "-r", "--ref",
+        help="File path of Class-Term list",
+        default=None
+        )
+    
+    parser.add_argument(
+        "-q", "--query",
+        help="File path of query term list",
+        default=None
+        )
+    
+    parser.add_argument(
+        "-a", "--all",
+        help="File path of all term list",
+        default=None
+        )
+
+    parser.add_argument(
+        "-d", "--delim1",
+        help="delimitter between class and term",
+        default="\t"
+        )
+    
+    parser.add_argument(
+        "--delim2",
+        help="delimitter among terms",
+        default="\t"
+        )
+    
+    parser.add_argument(
+        "--alt",
+        help    = "Alternative hypothesis type (\"greater\" :default, \"less\", \"two-sided\")",
+        default = "\t"
+        )
+    
+    parser.add_argument(
+        "--cor",
+        help    = "Multiple test correction\n  default: fdr_bh\n  (see https://www.statsmodels.org/dev/generated/statsmodels.stats.multitest.multipletests.html)",
+        default="\t"
+        )
+        
+    # parse arguments
+    args = parser.parse_args()
+
+    # execute main_function()
+    entest(
+        inputfile   = args.input        ,
+        query_file  = args.query        ,
+        all_file    = args.all          ,
+        delim1      = args.delim1       ,
+        delim2      = args.delim2       ,
+        alternative = args.alt          , 
+        correction  = args.cor
+    )
