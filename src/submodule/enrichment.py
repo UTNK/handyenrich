@@ -2,7 +2,7 @@ import numpy     as     np
 from   scipy     import stats
 from   statsmodels.stats.multitest import multipletests
 
-def enrichment_testenrichment(
+def enrichment_test(
         class2termlist         ,
         query_termlist         ,
         all_termlist           ,
@@ -17,7 +17,7 @@ def enrichment_testenrichment(
 
     # prep
     
-    results = dict()
+    results = []
     for cl in classlist:
 
         termset_in_class = set(class2termlist[cl])
@@ -43,18 +43,22 @@ def enrichment_testenrichment(
         
         # store result
         
-        results[cl] = {
+        results.append(
+            {
             "classname" : cl,
             "stats"     : str(data[0,0])+";"+str(data[0,1])+";"+\
                           str(data[1,0])+";"+str(data[1,1]),
             "p_value"   : p, 
-        }
+            }
+        )
         
     # calculate q values
     
-    pvalues = np.array( [results][cl][p] for cl in classlist)
+    pvalues = [ r["p_value"] for r in results ]
     qvalues = multipletests(pvalues, method = correction)[1]
     for j, q in enumerate(qvalues):
-        results[classlist[j]]["q_value"] = q
+        results[j]["q_value"] = q
+    
+    results.sort(key=lambda x: x['p_value'])
     
     return results

@@ -60,7 +60,7 @@ def entest(
 
     # test enrichment in each class
 
-    results = enrichment.enrichment(
+    results = enrichment.enrichment_test(
         class2termlist = class2termlist,
         query_termlist = query_termlist,
         all_termlist   = all_termlist  ,
@@ -68,12 +68,20 @@ def entest(
         correction     = correction
     )
 
+    # output
+    print(
+        "classname"               + "\t" +\
+        "QC;CnotQ;QnotC;notCnotQ" + "\t" +\
+        "p_value"                 + "\t" +\
+        "q_value" 
+        )
+
     for result in results:
         print(
-            result[ "classname" ] + "\t" +\
-            result[ "stats"     ] + "\t" +\
-            result[ "p_value"   ] + "\t" +\
-            result[ "q_value"   ] 
+            result[ "classname" ]    + "\t" +\
+            result[ "stats"     ]    + "\t" +\
+            str(result[ "p_value" ]) + "\t" +\
+            str(result[ "q_value" ]) 
         )
 
 # interface
@@ -120,13 +128,13 @@ if __name__ == "__main__":
     parser.add_argument(
         "--alt",
         help    = "Alternative hypothesis type (\"greater\" :default, \"less\", \"two-sided\")",
-        default = "\t"
+        default = "greater"
         )
     
     parser.add_argument(
         "--cor",
         help    = "Multiple test correction\n  default: fdr_bh\n  (see https://www.statsmodels.org/dev/generated/statsmodels.stats.multitest.multipletests.html)",
-        default="\t"
+        default = "fdr_bh"
         )
         
     # parse arguments
