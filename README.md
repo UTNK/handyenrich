@@ -62,7 +62,7 @@ Output:
 
  Standard output: stats, p values, q values for each environment ontology term ("meo")
 
-### entest usage
+### Usage
 
 ```
 usage: entest [-h] [-v] [-r REF] [-q QUERY] [-a ALL] [-d DELIM1]
