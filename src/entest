@@ -132,6 +132,10 @@ if __name__ == "__main__":
     # parse arguments
     args = parser.parse_args()
 
+    if args.version:
+        print(LOGO)
+        exit()
+
     # execute main_function()
     entest(
         inputfile   = args.input        ,
