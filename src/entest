@@ -56,7 +56,7 @@ def entest(
     query_termlist      = mylink.make_list( query_file   )
 
     if (all_file == None):
-        all_termlist    = list(set(class2termlist.values()))
+        all_termlist    = list(set(mylink.make_list( class_term_file, column = 1 )))
     else:
         all_termlist    = mylink.make_list( all_file     )     
 

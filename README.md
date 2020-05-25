@@ -46,7 +46,7 @@ The HandyEnrich package contains an example input file in the `examples` directo
 Test enrichment of metagenome samples in environment ontology terms
 
 ```shell
-entest -r metagenome/meo_mg.txt -q metagenome/query.txt -a metagenome/mg.txt
+entest -r metagenome/meo_mg.txt -q metagenome/query.txt 
 ```
 
 
@@ -55,8 +55,6 @@ Input:
 [`meo_mg.txt`](https://github.com/UTNK/handyenrich/tree/master/example/metagenome/meo_mg.txt)
 
 [`query.txt`](https://github.com/UTNK/handyenrich/tree/master/example/metagenome/query.txt)
-
-[`mg.txt`](https://github.com/UTNK/handyenrich/tree/master/example/metagenome/mg.txt)
 
 Output:
 
