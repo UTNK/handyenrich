@@ -55,7 +55,10 @@ def entest(
     
     query_termlist      = mylink.make_list( query_file   )
 
-    all_termlist        = mylink.make_list( all_file     )     
+    if (all_file == None):
+        all_termlist    = list(set(class2termlist.values()))
+    else:
+        all_termlist    = mylink.make_list( all_file     )     
 
 
     # test enrichment in each class
