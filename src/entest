@@ -37,6 +37,7 @@ import sys
 def entest(
     class_term_file, 
     query_file, 
+    class_desc_file,
     all_file, 
     delim1="\t", 
     delim2="\t", 
@@ -44,7 +45,7 @@ def entest(
     correction  = None
     ):
 
-    # read a file
+    # read files
     
     class2termlist = mylink.make_hash2(
         class_term_file, 
@@ -58,7 +59,12 @@ def entest(
     if (all_file == None):
         all_termlist    = list(set(mylink.make_list( class_term_file, column = 1 )))
     else:
-        all_termlist    = mylink.make_list( all_file     )     
+        all_termlist    = mylink.make_list( all_file     )   
+
+    if (class_desc_file!=None):
+        class2description   = mylink.make_hash1(
+            class_desc_file, 
+            )
 
 
     # test enrichment in each class
@@ -76,8 +82,15 @@ def entest(
         "classname"               + "\t" +\
         "QC;CnotQ;QnotC;notCnotQ" + "\t" +\
         "p_value"                 + "\t" +\
-        "q_value" 
+        "q_value"                       ,
+        end=""
         )
+    if (class_desc_file!=None):
+        print(
+            "\tdescription",
+            end=""
+        )
+    print("")
 
     for result in results:
         print(
@@ -86,6 +99,13 @@ def entest(
             str(result[ "p_value" ]) + "\t" +\
             str(result[ "q_value" ]) 
         )
+        if (class_desc_file!=None):
+            print(
+                "\t" + \
+                class2description[ result[ "classname" ] ],
+                end=""
+            )
+        print("")
 
 # interface
 if __name__ == "__main__":
@@ -107,6 +127,12 @@ if __name__ == "__main__":
     parser.add_argument(
         "-q", "--query",
         help="File path of query term list",
+        default=None
+        )
+    
+    parser.add_argument(
+        "--desc",
+        help="File path of description list",
         default=None
         )
     
@@ -151,6 +177,7 @@ if __name__ == "__main__":
     entest(
         class_term_file = args.ref      , 
         query_file  = args.query        ,
+        desc_file   = args.desc         ,
         all_file    = args.all          ,
         delim1      = args.delim1       ,
         delim2      = args.delim2       ,
