@@ -58,4 +58,14 @@
   $ curl http://rest.kegg.jp/link/ko/rclass > rc_ko.txt
   ```
 
-  
+  - **rn_ko.txt**
+
+### Pathway - KEGG Orthology
+
+- Download date: June 1st, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/ko/pathway | grep map > pathway_ko.txt
+  ```
+
+  - **pathway_ko.txt**

@@ -97,7 +97,8 @@ def entest(
             result[ "classname" ]    + "\t" +\
             result[ "stats"     ]    + "\t" +\
             str(result[ "p_value" ]) + "\t" +\
-            str(result[ "q_value" ]) 
+            str(result[ "q_value" ])        ,
+            end="" 
         )
         if (class_desc_file!=None):
             print(
@@ -177,7 +178,7 @@ if __name__ == "__main__":
     entest(
         class_term_file = args.ref      , 
         query_file  = args.query        ,
-        desc_file   = args.desc         ,
+        class_desc_file = args.desc     ,
         all_file    = args.all          ,
         delim1      = args.delim1       ,
         delim2      = args.delim2       ,
