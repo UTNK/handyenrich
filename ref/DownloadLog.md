@@ -60,7 +60,7 @@
 
   - **rn_ko.txt**
 
-### Pathway - KEGG Orthology
+####KEGG Pathway - KEGG Orthology
 
 - Download date: June 1st, 2020
 
@@ -69,3 +69,41 @@
   ```
 
   - **pathway_ko.txt**
+
+#### EC Number - KEGG Reaction
+
+- Download date: June 27th, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/reaction/ec | awk '{ print $2"\t"$1 }' | cut -d"." -f1 | awk '{ print $2"\t"$1 }' | sort | uniq > ec1_rn.txt
+  $ curl http://rest.kegg.jp/link/reaction/ec | awk '{ print $2"\t"$1 }' | cut -d"." -f1,2 | awk '{ print $2"\t"$1 }' | sort | uniq > ec2_rn.tx
+  $ curl http://rest.kegg.jp/link/reaction/ec | awk '{ print $2"\t"$1 }' | cut -d"." -f1,2,3 | awk '{ print $2"\t"$1 }' | sort | uniq > ec3_rn.txt
+  $ cat ec*_rn.txt > ec_rn.txt
+  ```
+
+
+####KEGG Pathway - KEGG Module
+
+- Download date: June 28th, 2020
+
+  ```shell
+  $ (base) enukenoMacBook-puro:class_elem nk$ curl http://rest.kegg.jp/link/pathway/module | awk '{ print $2 "\t" $1 }' > pathway_md.txt
+  ```
+
+#### KEGG Module - KEGG Reaction
+
+- Download date: June 28th, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/reaction/module > md_rn.txt
+  ```
+
+#### KEGG Pathway - KEGG Reaction
+
+- Download date: June 28th, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/reaction/pathway | grep map > pathway_rn.txt
+  ```
+
+  
