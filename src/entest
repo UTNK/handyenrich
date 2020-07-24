@@ -101,11 +101,12 @@ def entest(
             end="" 
         )
         if (class_desc_file!=None):
-            print(
-                "\t" + \
-                class2description[ result[ "classname" ] ],
-                end=""
-            )
+            if (result[ "classname" ] in class2description.keys()):
+                print(
+                    "\t" + \
+                    class2description[ result[ "classname" ] ],
+                    end=""
+                )
         print("")
 
 # interface

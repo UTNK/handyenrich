@@ -21,6 +21,14 @@
   - **rclass.kegg.txt**
   - **compound.kegg.txt**
   - **ko.kegg.txt**
+  
+- Downloaded date: July 12th, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/list/glycan > glycan.kegg.txt
+  ```
+
+  - **glycan.kegg.txt**
 
 ###Link files
 
