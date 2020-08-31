@@ -40,7 +40,11 @@
   $ curl http://rest.kegg.jp/link/md/ko | awk '{ print $2"\t"$1 }' > md_ko.txt
   ```
 
-  - **md_ko.txt**
+- Download date: August 31st, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/md/ko | awk '{ print $2"\t"$1 }' | sort | uniq > md_ko.txt
+  ```
 
 ####EC Number - KEGG Orthology
 
@@ -95,7 +99,7 @@
 - Download date: June 28th, 2020
 
   ```shell
-  $ (base) enukenoMacBook-puro:class_elem nk$ curl http://rest.kegg.jp/link/pathway/module | awk '{ print $2 "\t" $1 }' > pathway_md.txt
+  $ curl http://rest.kegg.jp/link/pathway/module | awk '{ print $2 "\t" $1 }' > pathway_md.txt
   ```
 
 #### KEGG Module - KEGG Reaction
@@ -104,6 +108,12 @@
 
   ```shell
   $ curl http://rest.kegg.jp/link/reaction/module > md_rn.txt
+  ```
+  
+- Download date: August 31st, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/link/reaction/module | sort|uniq > md_rn.txt
   ```
 
 #### KEGG Pathway - KEGG Reaction
