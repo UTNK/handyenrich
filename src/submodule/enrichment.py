@@ -39,7 +39,7 @@ def enrichment_test(
         
         data = np.array([[len(in_query_in_class)   , len(outof_query_in_class   )],
                          [len(in_query_outof_class), len(outof_query_outof_class)]])
-        _, p = stats.fisher_exact(data, alternative='greater'); test="fisher"
+        _, p = stats.fisher_exact(data, alternative='alternative'); test="fisher"
         
         # store result
         
