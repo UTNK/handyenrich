@@ -40,7 +40,7 @@
   $ curl http://rest.kegg.jp/link/md/ko | awk '{ print $2"\t"$1 }' > md_ko.txt
   ```
 
-- Download date: August 31st, 2020
+- Download date: August 31st, 2020 > October 2nd, 2020
 
   ```shell
   $ curl http://rest.kegg.jp/link/md/ko | awk '{ print $2"\t"$1 }' | sort | uniq > md_ko.txt
@@ -74,7 +74,7 @@
 
 ####KEGG Pathway - KEGG Orthology
 
-- Download date: June 1st, 2020
+- Download date: June 1st, 2020 > October 2nd, 2020
 
   ```shell
   $ curl http://rest.kegg.jp/link/ko/pathway | grep map > pathway_ko.txt
@@ -124,4 +124,23 @@
   $ curl http://rest.kegg.jp/link/reaction/pathway | grep map > pathway_rn.txt
   ```
 
+
+#### KEGG Orthology - KEGG Reaction
+
+- Download date: October 2nd, 2020
+
+  ```shell
+  (base) enukenoMacBook-puro:class_elem nk$ curl http://rest.kegg.jp/link/ko/reaction | sort |uniq >rn_ko.txt
+  ```
+
+
+#### KEGG Genome
+
+- Download date: December 6th, 2020
+
+  ```shell
+  (base) enukenoMacBook-puro:class_description nk$ curl http://rest.kegg.jp/list/genome > ko.genome.txt
+  ```
+
   
+
