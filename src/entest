@@ -38,7 +38,8 @@ def entest(
     class_term_file, 
     query_file, 
     class_desc_file,
-    all_file, 
+    all_termfile, 
+    all_classfile,
     delim1="\t", 
     delim2="\t", 
     alternative = None, 
@@ -56,10 +57,15 @@ def entest(
     
     query_termlist      = mylink.make_list( query_file   )
 
-    if (all_file == None):
+    if (all_termfile == None):
         all_termlist    = list(set(mylink.make_list( class_term_file, column = 1 )))
     else:
-        all_termlist    = mylink.make_list( all_file     )   
+        all_termlist    = mylink.make_list( all_termfile     )  
+
+    if (all_classfile == None):
+        all_classlist    = list(set(mylink.make_list( class_term_file, column = 0 )))
+    else:
+        all_classlist    = mylink.make_list( all_classfile   )   
 
     if (class_desc_file!=None):
         class2description   = mylink.make_hash1(
@@ -73,6 +79,7 @@ def entest(
         class2termlist = class2termlist,
         query_termlist = query_termlist,
         all_termlist   = all_termlist  ,
+        all_classlist  = all_classlist ,
         alternative    = alternative   ,
         correction     = correction
     )
@@ -140,8 +147,14 @@ if __name__ == "__main__":
         )
     
     parser.add_argument(
-        "-a", "--all",
+        "-t", "--ter",
         help="File path of all term list",
+        default=None
+        )
+    
+    parser.add_argument(
+        "-c", "--cl",
+        help="File path of all tested class list",
         default=None
         )
 
@@ -181,7 +194,8 @@ if __name__ == "__main__":
         class_term_file = args.ref      , 
         query_file  = args.query        ,
         class_desc_file = args.desc     ,
-        all_file    = args.all          ,
+        all_termfile    = args.ter      ,
+        all_classfile   = args.cl       ,
         delim1      = args.delim1       ,
         delim2      = args.delim2       ,
         alternative = args.alt          , 

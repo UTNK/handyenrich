@@ -6,11 +6,12 @@ def enrichment_test(
         class2termlist         ,
         query_termlist         ,
         all_termlist           ,
+        all_classlist          ,
         alternative = "greater",
         correction  = "fdr_bh"   
         ):
 
-    classlist = list(class2termlist.keys())
+    classlist = all_classlist
     classlist.sort()
 
     query_termset = set(query_termlist)
