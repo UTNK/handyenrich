@@ -2,7 +2,7 @@
 
 ### Description files
 
-####KEGG various lists
+#### KEGG various lists
 
 - Download date: June 1st, 2020
 
@@ -30,9 +30,9 @@
 
   - **glycan.kegg.txt**
 
-###Link files
+### Link files
 
-####KEGG Module - KEGG Orthology
+#### KEGG Module - KEGG Orthology
 
 - Download date: June 1st, 2020
 
@@ -46,7 +46,7 @@
   $ curl http://rest.kegg.jp/link/md/ko | awk '{ print $2"\t"$1 }' | sort | uniq > md_ko.txt
   ```
 
-####EC Number - KEGG Orthology
+#### EC Number - KEGG Orthology
 
 - Download date: June 1st, 2020
 
@@ -72,7 +72,7 @@
 
   - **rn_ko.txt**
 
-####KEGG Pathway - KEGG Orthology
+#### KEGG Pathway - KEGG Orthology
 
 - Download date: June 1st, 2020 > October 2nd, 2020
 
@@ -94,7 +94,7 @@
   ```
 
 
-####KEGG Pathway - KEGG Module
+#### KEGG Pathway - KEGG Module
 
 - Download date: June 28th, 2020
 
@@ -139,8 +139,21 @@
 - Download date: December 6th, 2020
 
   ```shell
-  (base) enukenoMacBook-puro:class_description nk$ curl http://rest.kegg.jp/list/genome > ko.genome.txt
+  $ curl http://rest.kegg.jp/list/genome > ko.genome.txt
   ```
 
-  
 
+#### KEGG Module
+
+- Download date: January 3rd, 2020
+
+  ```shell
+  $ curl http://rest.kegg.jp/list/module > module.kegg.txt
+  ```
+
+#### KEGG Genome
+
+- Download date: February 10th, 2021
+
+  ```shell
+  $ curl http://rest.kegg.jp/list/genome > genome.kegg.txt
