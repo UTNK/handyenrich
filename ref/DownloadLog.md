@@ -133,6 +133,14 @@
   (base) enukenoMacBook-puro:class_elem nk$ curl http://rest.kegg.jp/link/ko/reaction | sort |uniq >rn_ko.txt
   ```
 
+#### KEGG Orthology - KEGG Brite
+
+- Download date: October 15th, 2021
+
+  ```shell
+  (base) konnonaoki@KonnonoMacBook-Pro class_elem % curl http://rest.kegg.jp/link/brite/ko | less | sort | uniq > ko_brite.txt
+  ```
+
 
 #### KEGG Genome
 
@@ -157,3 +165,11 @@
 
   ```shell
   $ curl http://rest.kegg.jp/list/genome > genome.kegg.txt
+
+### KEGG Brite
+
+- Download date: October 15th, 2021
+
+  ```shell
+  (base) konnonaoki@KonnonoMacBook-Pro class_description % curl http://rest.kegg.jp/list/brite > brite.kegg.txt
+  ```
